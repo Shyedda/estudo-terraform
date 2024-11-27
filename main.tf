@@ -14,15 +14,15 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-0ea3c35c5c3284d82"
+  ami = "ami-0ea3c35c5c3284d82"
   instance_type = "t2.micro"
   key_name = "estudo-iac"
   user_data = <<-EOF
-                  #!/bin/bash
-                        cd /home/ubuntu
-                        echo "<h1>Feito com Terraform</h1>" > index.html
-                        nohup busybox httpd -f -p 8080 &
-                  EOF
+                #!/bin/bash
+                cd /home/ubuntu
+                echo "<h1>Feito com Terraform</h1>" > index.html
+                nohup busybox httpd -f -p 8080 &
+                EOF
   tags = {
     Name = "teste-aws"
   }
